@@ -201,6 +201,12 @@
         for(var i = 0; i < parseInt($("#second").val()); i++){
             $("#secondStr").append("〇");
         }
+        //分の〇の表示を初期化
+        $("#minuteStr").html("");
+        //分の数だけ〇を表示
+        for(var i = 0; i < parseInt($("#minute").val()); i++){
+            $("#minuteStr").append("〇");
+        }
         period = 60*parseInt($("#minute").val()) + parseInt($("#second").val());
         $("#time").html("経過時間：0");
         $("#remain").html("残り時間: " + period);
