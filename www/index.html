@@ -155,7 +155,7 @@
     var period = 0;
     var rest = 0;
     var etime = 0;
-
+    var s = 0;
     // ボタンの初期設定
     function init(){
         $('#btnA').prop('disabled', false);
@@ -222,6 +222,14 @@
             $("#time").html("経過時間： " + etime);
             $("#remain").html("残り時間： " + rest);
             analog(rest);
+
+            //秒の数だけ〇を表示
+            s = rest % 60;
+            $("#secondStr").html("");
+            for(var i = 0; i < s; i++){
+                $("#secondStr").append("〇");
+            }
+
             if(rest <= 0){
                 active = false;
                 alarm();
