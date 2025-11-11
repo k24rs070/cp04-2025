@@ -156,6 +156,7 @@
     // 変数宣言
     var active = false;
     var startTime = 0;
+    var keepTime= 0;
     var period = 0;
     var rest = 0;
     var etime = 0;
@@ -189,17 +190,20 @@
     function btnAClick(e){
         active = true;
         startTime = new Date();
+        keepTime = 0;
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        keepTime = etime; //btnBクリック時の経過時間を保存
     }
 
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
         alarm();
         active = false;
+        keepTime = 0;
         //秒の〇の表示を初期化
         $("#secondStr").html("");
         //秒の数だけ〇を表示
@@ -216,6 +220,15 @@
         $("#time").html("経過時間：0");
         $("#remain").html("残り時間: " + period);
         
+    }
+
+    // ButtonRがクリックされた時の処理
+    function btnRClick(e){
+        if(!active && period > 0){
+            startTime = new Date() - (keepTime * 1000);
+            active = true;
+        }
+    
     }
     
  
